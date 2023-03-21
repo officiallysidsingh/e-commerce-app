@@ -1,4 +1,4 @@
-import cat1 from "../../assets/category/cat-1.jpg";
+import cat1 from "../../../assets/category/cat-1.jpg";
 
 import "./Category.scss";
 

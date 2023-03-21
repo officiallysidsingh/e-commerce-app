@@ -1,5 +1,5 @@
 import Banner from "./Banner/Banner";
-import Category from "../Category/Category";
+import Category from "./Category/Category";
 
 import "./Home.scss";
 import Products from "../Products/Products";
