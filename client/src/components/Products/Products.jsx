@@ -2,10 +2,12 @@ import Product from "./Product/Product";
 
 import "./Products.scss";
 
-const Products = () => {
+const Products = ({ innerPage }) => {
   return (
     <div className="productsContainer">
-      <div className="sectionHeading">Section Heading</div>
+      {!innerPage ? (
+        <div className="sectionHeading">Section Heading</div>
+      ) : null}
       <div className="products">
         <Product />
         <Product />
