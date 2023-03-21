@@ -35,7 +35,7 @@ const Header = () => {
           <li>About</li>
           <li>Categories</li>
         </ul>
-        <div className="center">SID-ECOM-STORE</div>
+        <div className="center">SID-TECH-STORE</div>
         <div className="right">
           <TbSearch />
           <AiOutlineHeart />

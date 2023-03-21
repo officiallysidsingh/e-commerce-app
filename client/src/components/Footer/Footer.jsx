@@ -55,7 +55,7 @@ const Footer = () => {
       <div className="bottomBar">
         <div className="bottomBarContent">
           <div className="text">
-            SID-ECOM-STORE 2023 CREATED BY SIDDHARTH SINGH. PREMIUM E-COMMERCE
+            SID-TECH-STORE 2023 CREATED BY SIDDHARTH SINGH. PREMIUM E-COMMERCE
             SOLUTIONS.
           </div>
           <img src={Payment} alt="Accepted Payment Methods" />
