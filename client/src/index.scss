@@ -5,6 +5,7 @@
   --dark-blue: #8e2de2;
   --darker-blue: #6516aa;
   --gray: #6b6b6b;
+  --dark-gray: #212121;
   --background-gradient: linear-gradient(to right, #8e2de2, #4a00e0);
 }
 
@@ -20,4 +21,5 @@ body {
   font-size: 16px;
   line-height: 22px;
   font-weight: 500;
+  min-width: 320px;
 }
