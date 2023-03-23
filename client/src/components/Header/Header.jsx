@@ -13,6 +13,7 @@ import "./Header.scss";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [showCart, setShowCart] = useState(false);
 
   const handleScroll = () => {
     const offset = window.scrollY;
@@ -28,24 +29,27 @@ const Header = () => {
   }, []);
 
   return (
-    <header className={`mainHeader ${scrolled ? "stickyHeader" : ""}`}>
-      <div className="headerContent">
-        <ul className="left">
-          <li>Home</li>
-          <li>About</li>
-          <li>Categories</li>
-        </ul>
-        <div className="center">SID-TECH-STORE</div>
-        <div className="right">
-          <TbSearch />
-          <AiOutlineHeart />
-          <span className="cartIcon">
-            <CgShoppingCart />
-            <span>5</span>
-          </span>
+    <>
+      <header className={`mainHeader ${scrolled ? "stickyHeader" : ""}`}>
+        <div className="headerContent">
+          <ul className="left">
+            <li>Home</li>
+            <li>About</li>
+            <li>Categories</li>
+          </ul>
+          <div className="center">SID-TECH-STORE</div>
+          <div className="right">
+            <TbSearch />
+            <AiOutlineHeart />
+            <span className="cartIcon" onClick={() => setShowCart(true)}>
+              <CgShoppingCart />
+              <span>5</span>
+            </span>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+      {showCart ? <Cart setShowCart={setShowCart} /> : null}
+    </>
   );
 };
 
