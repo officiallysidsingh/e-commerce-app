@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ScrollToTop from "./utils/scrollToTop";
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -12,7 +11,6 @@ import AppContext from "./utils/context.jsx";
 function App() {
   return (
     <Router>
-      <ScrollToTop />
       <AppContext>
         <Header />
         <Routes>
