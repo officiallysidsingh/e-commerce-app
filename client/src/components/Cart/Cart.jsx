@@ -21,23 +21,26 @@ const Cart = ({ setShowCart }) => {
           </span>
         </div>
 
-        {/*<div className="emptyCart">
-          <BsCartX />
-          <span>No products in the cart.</span>
-          <button className="returnCta">RETURN TO SHOP</button>
-        </div>*/}
-        <>
-          <CartItem />
-          <div className="cartFooter">
-            <div className="subtotal">
-              <span className="text">Subtotal: </span>
-              <span className="text total">&#8377;{cartSubTotal}</span>
-            </div>
-            <div className="button">
-              <button className="checkoutCta">Checkout</button>
-            </div>
+        {!cartItems?.length ? (
+          <div className="emptyCart">
+            <BsCartX />
+            <span>No products in the cart.</span>
+            <button className="returnCta">RETURN TO SHOP</button>
           </div>
-        </>
+        ) : (
+          <>
+            <CartItem />
+            <div className="cartFooter">
+              <div className="subtotal">
+                <span className="text">Subtotal: </span>
+                <span className="text total">&#8377;{cartSubTotal}</span>
+              </div>
+              <div className="button">
+                <button className="checkoutCta">Checkout</button>
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
