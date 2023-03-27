@@ -6,6 +6,8 @@ import "./CartItem.scss";
 
 import { Context } from "../../../utils/context";
 
+const BASE_URL = import.meta.env.VITE_APP_DEV_URL;
+
 const CartItem = () => {
   const { cartItems, handleRemoveFromCart, handleCartProductQuantity } =
     useContext(Context);
@@ -14,7 +16,10 @@ const CartItem = () => {
       {cartItems.map((item) => (
         <div key={item.id} className="cartProduct">
           <div className="imgContainer">
-            <img src={prod} alt="product" />
+            <img
+              src={BASE_URL + item.attributes.Img.data[0].attributes.url}
+              alt="product"
+            />
           </div>
           <div className="prodDetails">
             <span className="name">{item.attributes.Title}</span>
