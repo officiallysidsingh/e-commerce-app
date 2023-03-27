@@ -14,8 +14,10 @@ const Category = () => {
   return (
     <div className="categoryMainContent">
       <div className="layout">
-        <div className="categoryTitle">Category Title</div>
-        <Products innerPage={true} />
+        <div className="categoryTitle">
+          {data?.data[0].attributes.categories.data[0].attributes.Title}
+        </div>
+        <Products innerPage={true} products={data} />
       </div>
     </div>
   );
