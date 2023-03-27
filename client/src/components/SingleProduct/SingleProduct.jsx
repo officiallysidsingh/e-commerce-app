@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+
 import RelatedProducts from "./RelatedProducts/RelatedProducts";
 import {
   FaFacebookF,
@@ -7,28 +10,50 @@ import {
   FaPinterest,
   FaCartPlus,
 } from "react-icons/fa";
-import prod from "../../assets/products/earbuds-prod-1.webp";
+import useFetch from "../../hooks/useFetch";
 
 import "./SingleProduct.scss";
 
+const BASE_URL = import.meta.env.VITE_APP_DEV_URL;
+
 const SingleProduct = () => {
+  const [quantity, setQuantity] = useState(1);
+  const { id } = useParams();
+  const { data } = useFetch(`/api/products?populate=*&[filters][id]=${id}`);
+
+  const increment = () => {
+    setQuantity((prevState) => prevState + 1);
+  };
+
+  const decrement = () => {
+    setQuantity((prevState) => {
+      if (prevState === 1) return 1;
+      return prevState - 1;
+    });
+  };
+
+  if (!data) return;
+  const product = data.data[0].attributes;
   return (
     <div className="singleProductMainContent">
       <div className="layout">
         <div className="singleProductPage">
           <div className="left">
-            <img src={prod} alt="Product Image" />
+            <img
+              src={BASE_URL + product.Img.data[0].attributes.url}
+              alt={product.Title}
+            />
           </div>
           <div className="right">
-            <span className="name">Product Name</span>
-            <span className="price">Price</span>
-            <span className="desc">Product Description</span>
+            <span className="name">{product.Title}</span>
+            <span className="price">&#8377;{product.Price}</span>
+            <span className="desc">{product.Description}</span>
 
             <div className="cartButtons">
               <div className="quantityButtons">
-                <span>-</span>
-                <span>5</span>
-                <span>+</span>
+                <span onClick={decrement}>-</span>
+                <span>{quantity}</span>
+                <span onClick={increment}>+</span>
               </div>
               <button className="addToCartButton">
                 <FaCartPlus size={20} />
@@ -40,8 +65,8 @@ const SingleProduct = () => {
 
             <div className="infoItem">
               <span className="textBold">
-                Category:
-                <span> Headphones</span>
+                Category:{" "}
+                <span>{product.categories.data[0].attributes.Title}</span>
               </span>
               <span className="textBold">
                 Share:
