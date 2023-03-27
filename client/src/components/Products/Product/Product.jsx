@@ -8,7 +8,7 @@ const Product = ({ data, id }) => {
       <div className="thumbnail">
         <img
           src={BASE_URL + data.Img.data[0].attributes.url}
-          alt="Product Image"
+          alt={data.Title}
         />
       </div>
       <div className="productDetails">
