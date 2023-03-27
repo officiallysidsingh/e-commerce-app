@@ -1,30 +1,44 @@
+import { useContext } from "react";
 import { MdClose } from "react-icons/md";
 import prod from "../../../assets/products/earbuds-prod-1.webp";
 
 import "./CartItem.scss";
 
+import { Context } from "../../../utils/context";
+
 const CartItem = () => {
+  const { cartItems, handleRemoveFromCart, handleCartProductQuantity } =
+    useContext(Context);
   return (
     <div className="cartProducts">
-      <div className="cartProduct">
-        <div className="imgContainer">
-          <img src={prod} alt="product" />
-        </div>
-        <div className="prodDetails">
-          <span className="name">Product Name</span>
-          <MdClose className="closeBtn" />
-          <div className="quantityButtons">
-            <span>-</span>
-            <span>5</span>
-            <span>+</span>
+      {cartItems.map((item) => (
+        <div key={item.id} className="cartProduct">
+          <div className="imgContainer">
+            <img src={prod} alt="product" />
           </div>
-          <div className="text">
-            <span>3</span>
-            <span>x</span>
-            <span className="highlight">&#8377;4567</span>
+          <div className="prodDetails">
+            <span className="name">{item.attributes.Title}</span>
+            <MdClose
+              className="closeBtn"
+              onClick={() => handleRemoveFromCart(item)}
+            />
+            <div className="quantityButtons">
+              <span onClick={() => handleCartProductQuantity("dec", item)}>
+                -
+              </span>
+              <span>{item.attributes.quantity}</span>
+              <span onClick={() => handleCartProductQuantity("inc", item)}>
+                +
+              </span>
+            </div>
+            <div className="text">
+              <span>{item.attributes.quantity}</span>
+              <span>x</span>
+              <span className="highlight">&#8377;{item.attributes.Price}</span>
+            </div>
           </div>
         </div>
-      </div>
+      ))}
     </div>
   );
 };

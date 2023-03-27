@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { Context } from "../../utils/context";
+
 import CartItem from "./CartItem/CartItem";
 import { MdClose } from "react-icons/md";
 import { BsCartX } from "react-icons/bs";
@@ -5,6 +8,7 @@ import { BsCartX } from "react-icons/bs";
 import "./Cart.scss";
 
 const Cart = ({ setShowCart }) => {
+  const { cartItems, cartSubTotal } = useContext(Context);
   return (
     <div className="cartPanel">
       <div className="opacLayer"></div>
@@ -27,7 +31,7 @@ const Cart = ({ setShowCart }) => {
           <div className="cartFooter">
             <div className="subtotal">
               <span className="text">Subtotal: </span>
-              <span className="text total">&#8377;1234</span>
+              <span className="text total">&#8377;{cartSubTotal}</span>
             </div>
             <div className="button">
               <button className="checkoutCta">Checkout</button>
