@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const STRAPI_API_KEY = import.meta.env.VITE_APP_STRIPE_API_KEY;
+const STRAPI_API_KEY = import.meta.env.VITE_APP_STRAPI_API_KEY;
 const BASE_URL = import.meta.env.VITE_APP_DEV_URL;
 
 const params = {
@@ -18,3 +18,10 @@ export const fetchDataFromApi = async (url) => {
     return error;
   }
 };
+
+export const makePaymentRequest = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    Authorization: "bearer " + STRAPI_API_KEY,
+  },
+});

@@ -5,10 +5,33 @@ import CartItem from "./CartItem/CartItem";
 import { MdClose } from "react-icons/md";
 import { BsCartX } from "react-icons/bs";
 
+import { loadStripe } from "@stripe/stripe-js";
+import { makePaymentRequest } from "../../utils/api";
+
 import "./Cart.scss";
+
+const PUBLISHABLE_KEY = import.meta.env.VITE_APP_STRIPE_PUBLISHABLE_KEY;
 
 const Cart = ({ setShowCart }) => {
   const { cartItems, cartSubTotal } = useContext(Context);
+
+  const stripePromise = loadStripe(PUBLISHABLE_KEY);
+
+  const handlePayment = async () => {
+    try {
+      const stripe = await stripePromise;
+      const res = await makePaymentRequest.post("/api/orders", {
+        products: cartItems,
+      });
+
+      await stripe.redirectToCheckout({
+        sessionId: res.data.stripeSession.id,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="cartPanel">
       <div className="opacLayer"></div>
@@ -36,7 +59,9 @@ const Cart = ({ setShowCart }) => {
                 <span className="text total">&#8377;{cartSubTotal}</span>
               </div>
               <div className="button">
-                <button className="checkoutCta">Checkout</button>
+                <button className="checkoutCta" onClick={handlePayment}>
+                  Checkout
+                </button>
               </div>
             </div>
           </>
