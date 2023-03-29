@@ -20,9 +20,9 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
             price_data: {
               currency: "inr",
               product_data: {
-                name: item.title,
+                name: item.Title,
               },
-              unit_amount: Math.round(item.price * 100),
+              unit_amount: Math.round(item.Price * 100),
             },
             quantity: product.attributes.quantity,
           };

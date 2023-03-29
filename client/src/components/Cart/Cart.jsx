@@ -23,7 +23,6 @@ const Cart = ({ setShowCart }) => {
       const res = await makePaymentRequest.post("/api/orders", {
         products: cartItems,
       });
-
       await stripe.redirectToCheckout({
         sessionId: res.data.stripeSession.id,
       });
