@@ -14,7 +14,7 @@ Step-1: Fork and Clone the Repository using Git to your Local Machine.
 
 Step-2: Run the command "npm ci" for installing the node module dependencies.
 
-Step-3: Go to the Client folder and make a .env file according to the info given in .env.example file.
+Step-3: Go to the Client folder and edit the .env file according to the info given in .env.example file.
 
 Step-4: You may also edit the .env file of Api folder according to the info given in .env.example file of Api folder.
 
