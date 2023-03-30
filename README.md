@@ -3,6 +3,28 @@
 This E-Commerce Web App was built using React.js on the frontend and it uses Strapi Headless CMS. It's database consists of Sqlite.
 This App also has Payment Gateway Integration Using Stripe.
 
+## Screenshots of Web App
+
+### Hero Banner Section
+
+![Hero Banner Section](https://github.com/officiallysidsingh/e-commerce-app/blob/main/screenshots/HeroBanner.png?raw=true)
+
+### Products Section
+
+![Products Section](https://github.com/officiallysidsingh/e-commerce-app/blob/main/screenshots/Products.png?raw=true)
+
+### Search Section
+
+![Search Section](https://github.com/officiallysidsingh/e-commerce-app/blob/main/screenshots/Search.png?raw=true)
+
+### Cart Section
+
+![Cart Section](https://github.com/officiallysidsingh/e-commerce-app/blob/main/screenshots/Cart.png?raw=true)
+
+### Payment Gateway Section
+
+![Payment Gateway Section](https://github.com/officiallysidsingh/e-commerce-app/blob/main/screenshots/PaymentGateway.png?raw=true)
+
 ## Steps to Setup on the Local Machine
 
 ### Prerequisites
